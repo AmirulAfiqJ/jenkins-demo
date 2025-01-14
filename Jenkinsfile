@@ -5,7 +5,7 @@ pipeline {
     }
 
     environment {
-        SONAR_HOST_URL = 'http://your-sonarqube-server:9000'
+        SONAR_HOST_URL = 'http://localhost:9000'
         SONAR_AUTH_TOKEN = credentials('sonar-token-id') 
     }
 
@@ -31,7 +31,7 @@ pipeline {
                     withSonarQubeEnv('SonarQube') { 
                         sh """
                         mvn sonar:sonar \
-                             -Dsonar.projectKey=your-project-key \
+                             -Dsonar.projectKey=test-demo \
                              -Dsonar.host.url=${SONAR_HOST_URL} \
                              -Dsonar.login=${SONAR_AUTH_TOKEN}
                         """
