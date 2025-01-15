@@ -13,7 +13,9 @@ pipeline {
 
         stage('Build') {
             steps {
+                dir('jenkins-demo') {
                 bat 'mvn clean install'
+                } 
             }
         }
 
