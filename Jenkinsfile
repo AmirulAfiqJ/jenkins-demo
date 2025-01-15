@@ -29,8 +29,10 @@ pipeline {
 
         stage('Code Analysis') {
             steps {
+                dir ('jenkins-demo') {
                 withSonarQubeEnv('SonarQube') {
                     bat 'mvn sonar:sonar'
+                    }
                 }
             }
         }
