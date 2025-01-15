@@ -21,7 +21,9 @@ pipeline {
 
         stage('Test') {
             steps {
+                dir ('jenkins-demo') {
                 bat 'mvn test'
+                }
             }
         }
 
