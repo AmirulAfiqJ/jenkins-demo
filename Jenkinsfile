@@ -47,10 +47,7 @@ pipeline {
             steps {
                 script {
                     dir('jenkins-demo') {
-                bat 'docker build -t %DOCKER_IMAGE_NAME%:%BUILD_NUMBER% -f jenkins-demo/Dockerfile jenkins-demo'
-                withDockerRegistry(credentialsId: "${DOCKER_CREDENTIALS_ID}", url: '') {
-                    bat 'docker push %DOCKER_IMAGE_NAME%:%BUILD_NUMBER%'
-                        }
+                        bat 'docker build -t amirulafiqj/jenkins-demo:%BUILD_NUMBER% .'       
                     }
                 }
             }
