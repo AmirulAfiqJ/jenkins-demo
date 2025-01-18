@@ -7,7 +7,7 @@ pipeline {
     environment {
         DOCKER_CREDENTIALS_ID = 'dockerhub-credential' // Replace with your Jenkins Docker credentials ID
         DOCKER_IMAGE_NAME = 'amirulafiqj/jenkins-demo' // Replace with your Docker Hub username and repo name
-        KUBECONFIG_CREDENTIALS_ID = 'kubeconfig-credentials' // Replace with your Jenkins Kubernetes credentials ID this one later
+        KUBECONFIG_CREDENTIALS_ID = 'kubeconfig-credential' // Replace with your Jenkins Kubernetes credentials ID this one later
     }
 
     stages {
@@ -59,7 +59,7 @@ pipeline {
                     withKubeConfig([credentialsId: "${KUBECONFIG_CREDENTIALS_ID}"]) {
                         dir('jenkins-demo') {
                             bat """
-                                kubectl set image deployment/jenkins-demo jenkins-demo=${DOCKER_IMAGE_NAME}:${env.BUILD_NUMBER} --record
+				kubectl apply -f deployment.yaml
                                 kubectl rollout status deployment/jenkins-demo
                             """
                         }
