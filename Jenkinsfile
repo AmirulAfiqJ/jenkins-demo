@@ -71,7 +71,7 @@ pipeline {
                         dir('jenkins-demo') {
                             bat """
                                 kubectl apply -f deployment.yaml
-                                kubectl set image deployment/jenkins-demo jenkins-demo=${DOCKER_IMAGE_NAME}:latest --record
+                                kubectl set image deployment/jenkins-demo jenkins-container=${DOCKER_IMAGE_NAME}:latest --record
                                 kubectl rollout status deployment/jenkins-demo
                             """
                         }
