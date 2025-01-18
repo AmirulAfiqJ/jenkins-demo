@@ -13,7 +13,7 @@ spec:
         app: jenkins-demo
     spec:
       containers:
-      - name: jenkins-demo
-        image: your-dockerhub-username/jenkins-demo:latest
+      - name: jenkins-container
+        image: amirulafiqj/jenkins-demo:${BUILD_NUMBER}
         ports:
         - containerPort: 8080
