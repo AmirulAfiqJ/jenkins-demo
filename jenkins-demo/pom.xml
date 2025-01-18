@@ -7,6 +7,7 @@
   <version>1.0-SNAPSHOT</version>
   <name>jenkins-demo</name>
   <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -16,13 +17,29 @@
     </dependency>
   </dependencies>
 
-<build>
-	<plugins>
-		<plugin>
-			<groupId>org.sonarsource.scanner.maven</groupId>
-			<artifactId>sonar-maven-plugin</artifactId>
-			<version>4.0.0.2929</version>
-		</plugin>
-	</plugins>
-</build>
+  <build>
+    <plugins>
+      <!-- Add Maven JAR Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <!-- Specify the fully qualified main class -->
+              <mainClass>com.example.App</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <!-- Sonar Maven Plugin -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>4.0.0.2929</version>
+      </plugin>
+    </plugins>
+  </build>
 </project>
